@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High Market Online — Order Fulfillment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">HM</span>
+      <div>
+        <h1>Order fulfillment</h1>
+        <p class="brand-sub">High Market Online — internal ops console</p>
+      </div>
+    </div>
+    <div class="legend" aria-label="Role color key">
+      <span class="legend-item"><i class="dot dot-customer"></i>Customer</span>
+      <span class="legend-item"><i class="dot dot-teamlead"></i>Team lead</span>
+      <span class="legend-item"><i class="dot dot-employee"></i>Employee</span>
+      <span class="legend-item"><i class="dot dot-system"></i>System</span>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="board">Order board</button>
+    <button class="tab" data-tab="roster">Employee roster</button>
+    <button class="tab" data-tab="report">Orders by employee</button>
+  </nav>
+
+  <main>
+    <section id="panel-board" class="panel active">
+      <div class="panel-head">
+        <h2>Order board</h2>
+        <div class="summary" id="summary"></div>
+      </div>
+      <div class="table-wrap">
+        <table id="orders-table">
+          <thead>
+            <tr>
+              <th>Order</th><th>Customer</th><th>Type</th><th>Status</th>
+              <th>Assigned to</th><th>Handling</th><th>SLA</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="orders-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="panel-roster" class="panel">
+      <div class="panel-head"><h2>Employee roster & capacity</h2></div>
+      <div class="table-wrap">
+        <table id="roster-table">
+          <thead>
+            <tr>
+              <th>Name</th><th>Role</th><th>Status</th><th>Shift</th>
+              <th>Avg handling (min)</th><th>Daily capacity</th><th>Assigned today</th>
+            </tr>
+          </thead>
+          <tbody id="roster-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="panel-report" class="panel">
+      <div class="panel-head"><h2>Orders by employee</h2><p class="hint">Daily review view for the team lead — mirrors the Smartsheet report.</p></div>
+      <div id="report-groups"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

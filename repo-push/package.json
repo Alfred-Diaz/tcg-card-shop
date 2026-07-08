@@ -1,0 +1,17 @@
+{
+  "name": "tcg-order-fulfillment-api",
+  "version": "1.0.0",
+  "description": "Hosted API + dashboard implementation of the High Market Online / TCG Shop order fulfillment process (see Solution Design Document, Section 6-7). Traditional coded alternative to the Smartsheet build.",
+  "main": "server.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
