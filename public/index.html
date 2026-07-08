@@ -1,75 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>High Market Online — Order Fulfillment</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TCG Card Shop</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
-    <div class="brand">
-      <span class="brand-mark">HM</span>
-      <div>
-        <h1>Order fulfillment</h1>
-        <p class="brand-sub">High Market Online — internal ops console</p>
-      </div>
+    <div>
+      <p class="eyebrow">Trading Card Shop System</p>
+      <h1>TCG Card Shop</h1>
     </div>
-    <div class="legend" aria-label="Role color key">
-      <span class="legend-item"><i class="dot dot-customer"></i>Customer</span>
-      <span class="legend-item"><i class="dot dot-teamlead"></i>Team lead</span>
-      <span class="legend-item"><i class="dot dot-employee"></i>Employee</span>
-      <span class="legend-item"><i class="dot dot-system"></i>System</span>
-    </div>
+    <nav>
+      <a href="#catalog">Catalog</a>
+      <a href="#inventory">Inventory</a>
+      <a href="#pos">POS</a>
+      <a href="#reports">Reports</a>
+    </nav>
   </header>
 
-  <nav class="tabs" role="tablist">
-    <button class="tab active" data-tab="board">Order board</button>
-    <button class="tab" data-tab="roster">Employee roster</button>
-    <button class="tab" data-tab="report">Orders by employee</button>
-  </nav>
-
   <main>
-    <section id="panel-board" class="panel active">
-      <div class="panel-head">
-        <h2>Order board</h2>
-        <div class="summary" id="summary"></div>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Render-ready deployment</p>
+        <h2>Manage singles, sealed products, sales, and stock in one lightweight app.</h2>
+        <p class="muted">This starter system is ready for Render and can later be connected to Supabase for persistent inventory, authentication, and sales history.</p>
+        <div class="actions">
+          <a class="button primary" href="#pos">Open POS</a>
+          <a class="button" href="#inventory">View Inventory</a>
+        </div>
       </div>
-      <div class="table-wrap">
-        <table id="orders-table">
-          <thead>
-            <tr>
-              <th>Order</th><th>Customer</th><th>Type</th><th>Status</th>
-              <th>Assigned to</th><th>Handling</th><th>SLA</th><th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="orders-body"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="panel-roster" class="panel">
-      <div class="panel-head"><h2>Employee roster & capacity</h2></div>
-      <div class="table-wrap">
-        <table id="roster-table">
-          <thead>
-            <tr>
-              <th>Name</th><th>Role</th><th>Status</th><th>Shift</th>
-              <th>Avg handling (min)</th><th>Daily capacity</th><th>Assigned today</th>
-            </tr>
-          </thead>
-          <tbody id="roster-body"></tbody>
-        </table>
+      <div class="hero-card">
+        <span class="badge">Live Demo</span>
+        <h3 id="hero-total">₱0.00</h3>
+        <p>Total cart value</p>
       </div>
     </section>
 
-    <section id="panel-report" class="panel">
-      <div class="panel-head"><h2>Orders by employee</h2><p class="hint">Daily review view for the team lead — mirrors the Smartsheet report.</p></div>
-      <div id="report-groups"></div>
+    <section class="stats" id="reports">
+      <article><span id="stat-products">0</span><p>Products</p></article>
+      <article><span id="stat-stock">0</span><p>Total Stock</p></article>
+      <article><span id="stat-value">₱0.00</span><p>Inventory Value</p></article>
+      <article><span id="stat-low">0</span><p>Low Stock</p></article>
+    </section>
+
+    <section class="panel" id="catalog">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Products</p>
+          <h2>Catalog</h2>
+        </div>
+        <input id="search" type="search" placeholder="Search card, set, rarity..." />
+      </div>
+      <div id="catalog-grid" class="catalog-grid"></div>
+    </section>
+
+    <section class="grid-2">
+      <section class="panel" id="inventory">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Operations</p>
+            <h2>Inventory</h2>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>SKU</th><th>Product</th><th>Type</th><th>Stock</th><th>Price</th></tr>
+            </thead>
+            <tbody id="inventory-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" id="pos">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Checkout</p>
+            <h2>Point of Sale</h2>
+          </div>
+        </div>
+        <div id="cart-list" class="cart-list"></div>
+        <div class="cart-total">
+          <span>Total</span>
+          <strong id="cart-total">₱0.00</strong>
+        </div>
+        <button id="checkout" class="button primary full">Complete Sale</button>
+        <p id="sale-message" class="muted small"></p>
+      </section>
     </section>
   </main>
 
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <footer>
+    <p>TCG Card Shop System - Starter deployment by Alfred Diaz</p>
+  </footer>
 
   <script src="app.js"></script>
 </body>
